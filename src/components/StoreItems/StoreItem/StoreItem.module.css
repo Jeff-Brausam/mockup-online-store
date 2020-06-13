@@ -1,0 +1,88 @@
+.StoreItem {
+    width: 18rem;
+    height: 10rem;
+    padding: .5rem 1rem 3rem 1rem;
+    margin: 1.5rem 1rem;
+    background: rgb(255, 255, 255);
+    font-size: .8rem;
+    line-height: 1rem;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+    cursor: default;
+    border-radius: 5px;  
+}
+
+.Img {
+    background: rgba(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 7rem;
+    margin: 0 auto;
+}
+
+.StoreItem img {
+    max-width: 100%;
+    max-height: 100%; 
+    overflow: hidden;
+    background-size: cover;
+}
+
+.StoreItem span {
+    width: 100%;
+}
+
+.StoreItem button {
+    cursor: pointer; 
+    outline: none;   
+    transform: translateY(0);
+}
+
+.StoreItem button:active {
+    outline: none;
+    transform: translateY(1px);
+}
+
+.ButtonRow {
+    display: flex;
+    justify-content: space-between;
+    height: 0%;
+    align-items: center;
+    margin: 2.1rem .3rem; 
+}
+
+.ItemName {
+    font-weight: 600;
+}
+
+.View {
+    background: rgba(255,255,255);
+    font-size: 1rem;
+}
+
+.View:hover{
+    transform: scale(1.09);
+}
+
+.Price {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.StoreItem:hover{
+    transform: scale(1.01); 
+    box-shadow: 0 5px 7px rgba(0,0,0,0.3);
+}
+
+.StoreItem button:disabled {
+    background-color: #C7C6C6;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+    color: #888888;
+}
+
+@media (max-width: 500px) {
+    .StoreItem {
+        width: 100%;
+        margin: .5rem 1.5rem;
+    }
+}

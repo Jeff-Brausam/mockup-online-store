@@ -1,0 +1,13 @@
+.Banner {
+    height: 15vh;
+    padding: 2rem;
+    background: white;
+    filter: invert(1);
+}
+
+.Banner img {
+    transform: scale(0.7);
+    max-height: 100%;
+    max-width: 100%;
+}
+

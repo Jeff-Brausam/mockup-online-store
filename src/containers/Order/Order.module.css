@@ -1,0 +1,52 @@
+.Order {
+    background-color: white;
+    height: 100%;
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 2rem;
+}
+
+.Order h3 {
+    margin-top: 0;
+    padding-top: 2rem;
+    font-weight: 400;
+    width: 25%;
+    margin: 0 auto;
+    font-size: 2rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    width: 50%;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.OrderContainer {
+    border: 1px solid rgba(0,0,0,.3);
+    width: 70%;
+    margin: 2rem auto;
+    box-shadow: 0 3px 5px rgba(0,0,0,.3);
+}
+
+.ItemsContainer {
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+    margin: 0 auto;
+    border: 1px solid rgb(0,0,0,.3);
+    padding: 0;
+}
+
+.ItemsContainer:nth-child(even) {
+    background: #eee
+}
+
+@media (max-width: 500px) {
+    .OrderContainer {
+        width: 90%;
+    }
+}
+
+

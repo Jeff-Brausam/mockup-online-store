@@ -1,0 +1,26 @@
+.StoreItems {
+    background: rgb(255, 255, 255);
+    /* background: #eee; */
+    width: 80%;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    height: 100%;
+    z-index: 0;
+    justify-content: center;
+}
+
+@media (max-width: 500px) {
+    .StoreItems {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .StoreItems {
+        width: 100%;   
+    }
+} 
+
+
+

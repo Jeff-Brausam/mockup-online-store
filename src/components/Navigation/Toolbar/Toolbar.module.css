@@ -1,0 +1,20 @@
+.Toolbar {
+    height: 7vh;
+    background: white;
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Logo {
+    max-width: 100%;
+    padding: .5rem;
+    position: absolute;
+    left: 2%;
+}
+
+@media (max-width: 499px) {
+    .DesktopOnly {
+        display: none;
+    }
+}

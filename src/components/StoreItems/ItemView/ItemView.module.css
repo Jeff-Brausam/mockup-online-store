@@ -1,0 +1,109 @@
+.ItemView {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 50%;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px black;
+    padding: 16px;
+    left: 25%;
+    top: 10%;
+    box-sizing: border-box;
+    transition: all 0.3s ease-out;
+}
+
+.ItemView span {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+/* Title */
+.ItemView h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    width: 80%;
+}
+
+.Close {
+    font-size: 1.5rem;
+    background-color: white;
+     border: none;
+}
+
+.Close:hover{
+    cursor: pointer;
+    color: rgba(0,0,0,.6);
+}
+
+
+.ItemView button {
+    position: absolute;
+    right: 0;
+    margin-right: .5rem;
+}
+
+.ImgContainer {
+    width: 40%;
+    margin: auto;
+}
+.ItemView img {
+    max-width: 100%;
+    /* max-height: 100%; */
+    height: auto;
+    object-fit: cover;
+}
+
+.Description {
+    width: 80%;
+    margin: auto;
+}
+
+.ItemView strong {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.ItemView hr {
+    border: 0;
+    height: 1px;
+    margin-bottom: 1rem;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.SpecsContainer {
+    width: 50%;
+    margin: 0 auto;
+    line-height: 1rem;
+}
+
+
+@media (max-width: 500px) {
+    .ItemView {
+        width: 90%;
+        left: 5%;
+    }
+    .ItemView span {
+        position: static;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .ItemView {
+        width: 80%;
+        left: 10%;
+    }
+    .ItemView span {
+        position: static;
+    }
+}
+
+/* @media (max-width: 1024px) {
+    .ItemView {
+        width: 75%;
+        left: 10%;
+    }
+    .ItemView span {
+        position: static;
+    }
+} */
