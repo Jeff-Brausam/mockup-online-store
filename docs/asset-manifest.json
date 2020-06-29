@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/mockup-online-store/static/css/main.bc361058.chunk.css",
+    "main.js": "/mockup-online-store/static/js/main.b7e966de.chunk.js",
+    "main.js.map": "/mockup-online-store/static/js/main.b7e966de.chunk.js.map",
+    "runtime-main.js": "/mockup-online-store/static/js/runtime-main.837ca4b2.js",
+    "runtime-main.js.map": "/mockup-online-store/static/js/runtime-main.837ca4b2.js.map",
+    "static/js/2.c08d1f79.chunk.js": "/mockup-online-store/static/js/2.c08d1f79.chunk.js",
+    "static/js/2.c08d1f79.chunk.js.map": "/mockup-online-store/static/js/2.c08d1f79.chunk.js.map",
+    "static/css/3.a34eec63.chunk.css": "/mockup-online-store/static/css/3.a34eec63.chunk.css",
+    "static/js/3.23430bfa.chunk.js": "/mockup-online-store/static/js/3.23430bfa.chunk.js",
+    "static/js/3.23430bfa.chunk.js.map": "/mockup-online-store/static/js/3.23430bfa.chunk.js.map",
+    "static/css/4.b6dd8b8f.chunk.css": "/mockup-online-store/static/css/4.b6dd8b8f.chunk.css",
+    "static/js/4.0b9fe378.chunk.js": "/mockup-online-store/static/js/4.0b9fe378.chunk.js",
+    "static/js/4.0b9fe378.chunk.js.map": "/mockup-online-store/static/js/4.0b9fe378.chunk.js.map",
+    "static/css/5.dda09db0.chunk.css": "/mockup-online-store/static/css/5.dda09db0.chunk.css",
+    "static/js/5.679c7241.chunk.js": "/mockup-online-store/static/js/5.679c7241.chunk.js",
+    "static/js/5.679c7241.chunk.js.map": "/mockup-online-store/static/js/5.679c7241.chunk.js.map",
+    "index.html": "/mockup-online-store/index.html",
+    "precache-manifest.0320bf3a8bb55bb6016894f924acfd26.js": "/mockup-online-store/precache-manifest.0320bf3a8bb55bb6016894f924acfd26.js",
+    "service-worker.js": "/mockup-online-store/service-worker.js",
+    "static/css/3.a34eec63.chunk.css.map": "/mockup-online-store/static/css/3.a34eec63.chunk.css.map",
+    "static/css/4.b6dd8b8f.chunk.css.map": "/mockup-online-store/static/css/4.b6dd8b8f.chunk.css.map",
+    "static/css/5.dda09db0.chunk.css.map": "/mockup-online-store/static/css/5.dda09db0.chunk.css.map",
+    "static/css/main.bc361058.chunk.css.map": "/mockup-online-store/static/css/main.bc361058.chunk.css.map",
+    "static/js/2.c08d1f79.chunk.js.LICENSE.txt": "/mockup-online-store/static/js/2.c08d1f79.chunk.js.LICENSE.txt",
+    "static/media/MockupBrand.svg": "/mockup-online-store/static/media/MockupBrand.95571b5e.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.837ca4b2.js",
+    "static/js/2.c08d1f79.chunk.js",
+    "static/css/main.bc361058.chunk.css",
+    "static/js/main.b7e966de.chunk.js"
+  ]
+}
