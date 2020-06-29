@@ -1,54 +1,30 @@
-import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
-import asyncComponent from '../asyncComponent/asyncComponent';
+import React, { useState } from 'react';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
-import Banner from '../../components/UI/Banner/Banner';
-import Store from '../../containers/Store/Store';
-import Logout from '../../containers/Auth/Logout/Logout';
 import Footer from '../../components/UI/Footer/Footer';
+import classes from './Layout.module.css'
 
-const asyncCheckout = asyncComponent(() => {
-    return import('../../containers/Checkout/Checkout');
-});
-const asyncOrders = asyncComponent(() => {
-    return import('../../containers/Order/Order');
-});
-const asyncAuth = asyncComponent(() => {
-    return import('../../containers/Auth/Auth');
-});
 
-class layout extends Component {
-    state = {
-        showSideDrawer: false,
+const Layout = props => {
+    const [showSideDrawer, setShowSideDrawer] = useState(false);
+
+    const sideDrawerClosedHandler = () => {
+        setShowSideDrawer(false);
     }
 
-    sideDrawerClosedHandler = () => {
-        this.setState({showSideDrawer: false})
+    const sideDrawerOpenHandler = () => {
+        setShowSideDrawer(!showSideDrawer);
     }
 
-    sideDrawerOpenHandler = () => {
-        this.setState((prevState) => {
-            return {showSideDrawer: !prevState.showSideDrawer}
-        });
-    }
-
-    render(){
-        return(
-            <div>
-                <Toolbar show={this.state.showSideDrawer} 
-                closed={this.sideDrawerClosedHandler} 
-                drawerToggleClicked={this.sideDrawerOpenHandler}/>
-                <Banner />
-                <Switch>
-                    <Route path="/checkout" component={asyncCheckout} />
-                    <Route path="/orders" component={asyncOrders} />
-                    <Route path="/signup" component={asyncAuth} />
-                    <Route path="/Logout" component={Logout} />
-                    <Route path="/" exact component={Store}/> 
-                </Switch>
-                <Footer />
-            </div>);
-    }
-
+    return(
+        <>
+            <Toolbar show={showSideDrawer} 
+            closed={sideDrawerClosedHandler} 
+            drawerToggleClicked={sideDrawerOpenHandler}/>
+            <main className={classes.MainPage}>
+                {props.children}
+            </main>
+            <Footer />
+        </>
+    );
 }
-export default layout;
+export default Layout;

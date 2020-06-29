@@ -1,29 +1,20 @@
-import React, { Component } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-
-
+import { useDispatch } from 'react-redux';
 import * as action from '../../../store/actions/index';
 
+const Logout = props => {
+    const dispatch = useDispatch();
 
-class Logout extends Component {
-    componentDidMount() {
-        // Log the user out, clear everything
-        this.props.onLogout();
-        // Reset the store, nothing in cart if you log out, fresh slate
-        this.props.initStoreInventory();
-    }
+    const onLogout = useCallback(() => dispatch(action.logout()), [dispatch]);
+    const initStoreInventory = useCallback(() => dispatch(action.fetchStoreInventory()), [dispatch]);
 
-    render(){
-        return <Redirect to="/"/>;
-    }
+    useEffect(() => {
+        onLogout();
+        initStoreInventory();
+    }, [onLogout, initStoreInventory]);
+
+    return <Redirect to="/"/>;  
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        onLogout: () => dispatch(action.logout()),
-        initStoreInventory: () => dispatch(action.fetchStoreInventory()),
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Logout);
+export default Logout;

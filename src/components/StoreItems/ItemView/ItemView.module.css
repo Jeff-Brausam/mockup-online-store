@@ -77,16 +77,7 @@
 }
 
 
-@media (max-width: 500px) {
-    .ItemView {
-        width: 90%;
-        left: 5%;
-    }
-    .ItemView span {
-        position: static;
-    }
 
-}
 
 @media (max-width: 768px) {
     .ItemView {
@@ -98,12 +89,13 @@
     }
 }
 
-/* @media (max-width: 1024px) {
+@media (max-width: 500px) {
     .ItemView {
-        width: 75%;
-        left: 10%;
+        width: 90%;
+        left: 5%;
+        top: 10%;
     }
     .ItemView span {
         position: static;
     }
-} */
+}

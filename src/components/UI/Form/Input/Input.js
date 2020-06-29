@@ -1,8 +1,5 @@
 import React from 'react';
- 
 import classes from './Input.module.css';
-
-
 
 const input = (props) => {
     let input = null
@@ -46,17 +43,9 @@ const input = (props) => {
                     value={props.value} />
     }
 
-    let validationError = null;
-    if (props.invalid && props.touched) {
-    validationError = <p>Please enter a valid {props.type}!</p>;
-    // validationError = <p>Please enter a valid {props.config.type}!</p>;
-    }
-    
-
     return (
         <div className={classes.Input}>
             {input}
-            {validationError}
         </div>
     );
 }

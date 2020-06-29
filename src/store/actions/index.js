@@ -3,7 +3,6 @@ export {
     addItemToCart,
     removeItemFromCart,
     fetchStoreInventory,    
-
 } from './onlineStore';
 
 // User orders exports

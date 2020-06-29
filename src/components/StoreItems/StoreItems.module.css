@@ -1,6 +1,5 @@
-.StoreItems {
-    background: rgb(255, 255, 255);
-    /* background: #eee; */
+/* .StoreItems {
+    background: transparent;
     width: 80%;
     display: flex;
     flex-flow: row wrap;
@@ -8,6 +7,17 @@
     height: 100%;
     z-index: 0;
     justify-content: center;
+} */
+.StoreItems {
+    background: transparent;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    margin: 0 auto;
+    height: 100%;
+    z-index: 0;
+    justify-content: center;
+    padding-top: 2rem;
 }
 
 @media (max-width: 500px) {

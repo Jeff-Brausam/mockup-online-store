@@ -1,8 +1,6 @@
 import React from 'react';
-
 import Button from '../../UI/Button/Button';
 import classes from './ItemView.module.css';
-
 
 const itemView = (props) => {
     const specs = Object.keys(props.items.specs).map(el => {return props.items.specs[el]})

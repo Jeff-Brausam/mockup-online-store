@@ -1,60 +1,48 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
-import classes from './Order.module.css';
+import React, { useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import classes from './Order.module.css';
 import * as action from '../../store/actions/index';
 
-class Order extends Component {
-    componentDidMount(){
-        this.props.fetchOrder(this.props.token, this.props.userId);
-    }
+const Order = props => {
+    const userOrder = useSelector(state => state.orders.userOrder);
+    const token = useSelector(state => state.auth.token);
+    const userId = useSelector(state => state.auth.userId);
 
-    render(){
-        let order = <Spinner />
-        if (this.props.userOrder){
-            order = this.props.userOrder.map((el) => {
-                return (
-                    <div key={el.id} className={classes.OrderContainer}>
-                        <p>ORDER ID: <strong>{el.id}</strong></p>
-                        <div>
-                            {el.cart.map((el,ind) =>( 
-                                <div className={classes.ItemsContainer}key={ind}>
-                                    <p>Item: {el.name}</p>
-                                    <p>Price: ${el.price}</p>
-                                </div>)
-                           )}               
-                        </div>
-                        <p>Total: <strong>${el.price}</strong></p>
+    const dispatch = useDispatch();
+    
+    const fetchOrder = useCallback((token, userId) => dispatch(action.fetchOrderStart(token, userId)), [dispatch])
+
+    useEffect(()=>{
+        fetchOrder(token, userId);
+    }, [fetchOrder, token, userId])
+
+    let order = <Spinner />
+
+    if (userOrder){
+        order = userOrder.map((el) => {
+            return (
+                <div key={el.id} className={classes.OrderContainer}>
+                    <p>ORDER ID: <strong>{el.id}</strong></p>
+                    <div>
+                        {el.cart.map((el,ind) => ( 
+                            <div className={classes.ItemsContainer}key={ind}>
+                                <p>Item: {el.name}</p>
+                                <p>Price: ${el.price}</p>
+                            </div> )
+                       )}               
                     </div>
-                )            
-            })
-        }
-        return(
-            <div className={classes.Order}>
-                <h3>MY ORDERS</h3>
-                <hr />
-                {order}
-            </div>);
+                    <p>Total: <strong>${el.price}</strong></p>
+                </div>
+            )            
+        })
     }
+    return (
+        <div className={classes.Order}>
+            <h3>MY ORDERS</h3>
+            <hr />
+            {order}
+        </div> );
 }
 
-const mapStateToProps = state => {
-    return {
-        userOrder: state.orders.userOrder,
-        loading: state.orders.loading,
-        token: state.auth.token,
-        userId: state.auth.userId,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        fetchOrder: (token, userId) => dispatch(action.fetchOrderStart(token, userId)),
-
-    }
-}
-
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Order);
+export default Order;

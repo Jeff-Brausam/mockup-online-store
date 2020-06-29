@@ -22,13 +22,13 @@ export const setStoreInventory = (storeInventory) => {
         storeInventory: storeInventory,
     };
 }
-
-export const fetchStoreInventoryFailed = () => {
+// Store fetch failed
+export const fetchStoreInventoryFailed = (error) => {
     return {
-        type: actionTypes.FETCH_STORE_INVENTORY_FAILED
+        type: actionTypes.FETCH_STORE_INVENTORY_FAILED,
+        error: error
     }
 }
-
 // Grab the items in the store from the server
 export const fetchStoreInventory = () => {
     return dispatch => {
@@ -37,7 +37,7 @@ export const fetchStoreInventory = () => {
                 dispatch(setStoreInventory(response.data));
             })
             .catch(error => {
-                dispatch(fetchStoreInventoryFailed());
+                dispatch(fetchStoreInventoryFailed(error));
             });
     };
 }

@@ -14,14 +14,26 @@ const initState = {
 
 const addItem = (state, action, storeIndex) => {
     return updateObject(state, {
-            // Check    IF the item is in stock ? TRUE = Add item with the same item ID to the cart : FALSE = Return if not in stock
-            cart: state.inStockStatus[storeIndex] !== false ? state.cart.concat(state.storeInventory.filter(el => el.itemID === action.itemID)) : state.cart,
-            // Check    IF the item is in stock ? TRUE = Add and Update the total price : FALSE item remains the same
-            totalPrice: state.inStockStatus[storeIndex] !== false ? state.totalPrice + state.storeInventory[storeIndex].price : state.totalPrice, 
+            // IF the item is in stock
+            cart: state.inStockStatus[storeIndex] !== false 
+            // Add item with the same item ID to the cart
+                ? state.cart.concat(state.storeInventory.filter(el => el.itemID === action.itemID)) 
+            // Return if not in stock
+                : state.cart,
+            // IF the item is in stock
+            totalPrice: state.inStockStatus[storeIndex] !== false 
+            // Add and Update the total price
+                ? state.totalPrice + state.storeInventory[storeIndex].price 
+            // Item remains the same
+                : state.totalPrice, 
             // Deduct an item count from the inventory status IF there are items (not = 0), ELSE if there is none left will return (as 0)  
             itemInvCount: state.itemInvCount.map((el, ind) => ind === storeIndex && el !== 0 ? el - 1 : el),
-            // Check    IF the count for that item in stock is 0 ? TRUE = item out of stock : FALSE item is in stock   
-            inStockStatus: state.itemInvCount[storeIndex] - 1 === 0  ? state.inStockStatus.map((elState, ind) => ind === storeIndex ? elState = false : elState) : state.inStockStatus,
+            // IF the count for that item in stock is 0
+            inStockStatus: state.itemInvCount[storeIndex] - 1 === 0  
+            // Selected item out of stock 
+                ? state.inStockStatus.map((elState, ind) => ind === storeIndex ? elState = false : elState) 
+            // item is in stock 
+                : state.inStockStatus,
             // Am currently ordering when an item is added
             ordering: true,
     });
@@ -31,12 +43,21 @@ const removeItem = (state, action, cartIndex, storeIndex) => {
     return updateObject(state, {
             // Find the item, return a new array with it removed (filtered out)
             cart: state.cart.filter((item, index) => index !== cartIndex),
-            // Check, is there items in the cart, if so deduct and update the total price, otherwise no items = $0
-            totalPrice: state.cart.length !== 0 ? state.totalPrice - state.cart[cartIndex].price : 0,  
+            // If there items in the cart
+            totalPrice: state.cart.length !== 0 
+            // Deduct and update the total price
+                ? state.totalPrice - state.cart[cartIndex].price 
+            // no items = $0
+                : 0,  
             // Add an item count back to the inventory status, checked against the original import, if it is equal don't add more
             itemInvCount: state.itemInvCount.map((el, ind) => ind === storeIndex && el !== state.storeInventory[storeIndex].inventory ? el + 1 : el), 
-            // Check the stock for that item is at 0, when the item is added back, it will make it true, otherwise it will remain false
-            inStockStatus: state.itemInvCount[storeIndex] === 0 ? state.inStockStatus.map((elState, ind) => ind === storeIndex ? elState = true : elState) : state.inStockStatus,  
+            // Check the stock for that item is at 0 
+            inStockStatus: state.itemInvCount[storeIndex] === 0 
+            // Selected item state is true
+                ? state.inStockStatus.map((elState, ind) => ind === storeIndex ? elState = true : elState) 
+            // Remains false (out of stock)
+                : state.inStockStatus,  
+            // reducedCart: reducedCart,
             // Ordering
             ordering: true
     });
@@ -46,12 +67,16 @@ const removeAllOfItem = (state, action, cartIndex, storeIndex) => {
     return updateObject(state, {
             // Remove all instances of this item
             cart: state.cart.filter((item) => item.itemID !== action.itemID),
+            // cart: state.cart.filter((item, index) => index !== cartIndex),
             // Update the total price (Total price - (cart item price (ex: $500) * (number of that item inside the cart))
-            totalPrice: state.cart.length !== 0 ? state.totalPrice - (state.cart[cartIndex].price * (state.storeInventory[storeIndex].inventory - state.itemInvCount[storeIndex])) : 0,
+            totalPrice: state.cart.length !== 0 
+            ? state.totalPrice - (state.cart[cartIndex].price * (state.storeInventory[storeIndex].inventory - state.itemInvCount[storeIndex])) 
+            : 0,
             // Update the inventory count, that item that just got removed, (matching indexes) will be back at original storeInvetory count 
             itemInvCount: state.itemInvCount.map((el, ind) => ind === storeIndex && el !== state.storeInventory[storeIndex].inventory ? el = state.storeInventory[storeIndex].inventory : el),
             // Item should now be back in stock, since it is not in the cart anymore
             inStockStatus: state.inStockStatus.map((elState, ind) => ind === storeIndex ? elState = true : elState),
+            // reducedCart: reducedCart,
             ordering: true
     });
 };
@@ -77,7 +102,6 @@ const setStoreInventory = (state, action) => {
     });
 };
 
-
 const reducer = (state = initState, action) => {
     let storeIndex;
     let cartIndex;
@@ -88,6 +112,7 @@ const reducer = (state = initState, action) => {
         // Index inside of the cart
         cartIndex = state.cart.findIndex(el => el.itemID === action.itemID);
     }
+
     switch ( action.type ) {
         case actionType.ADD_ITEM: return addItem( state, action, storeIndex )
         case actionType.REMOVE_ITEM: return removeItem( state, action, cartIndex, storeIndex )

@@ -1,7 +1,6 @@
 import React from 'react';
-
-import classes from './StoreItem.module.css'
 import Button from '../../UI/Button/Button';
+import classes from './StoreItem.module.css'
 
 const storeItem = (props) => {
     return(
@@ -25,8 +24,6 @@ const storeItem = (props) => {
                     disabled={props.stockedStatus[props.ind] === false}
                     clicked={()=>props.addToCart(props.id)}>Add To Cart</Button>
                 </span>
-                
-                {/* <button className={classes.AddToCart} onClick={()=>props.addToCart(props.id)} disabled={props.stockedStatus[props.ind] === false} >Add To Cart</button> */}
             </div>
         </div>);
 }

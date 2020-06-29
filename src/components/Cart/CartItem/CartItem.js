@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './UserCart.module.css';
-import Button from '../UI/Button/Button';
+import classes from './CartItem.module.css';
+import Button from '../../UI/Button/Button';
 
-const userCart = (props) => {
+const CartItem = (props) => {
     return (
-        <div className={classes.Order}>
+        <div className={classes.CartItem}>
             <span>
                 <div className={classes.ImageContainer}>
                     <img src={props.img} alt={props.name} />
@@ -29,9 +29,6 @@ const userCart = (props) => {
             </span>
         </div>
     );
-
 };
  
-
-
-export default userCart;
+export default CartItem;

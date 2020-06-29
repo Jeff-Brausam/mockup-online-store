@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import StoreItems from '../../components/StoreItems/StoreItems';
 import ItemView from '../../components/StoreItems/ItemView/ItemView';
 import Backdrop from '../../components/UI/Backdrop/Backdrop';
@@ -8,109 +8,92 @@ import Modal from '../../components/UI/Modal/Modal';
 import classes from './Store.module.css';
 import * as action from '../../store/actions/index';
 
-class Store extends Component {
-    state = {
-        viewedItem: null,
-        viewedIndex: null,
-        viewing: false,
-    }
+export const Store = props => { 
+    const [viewedItem, setViewedItem] = useState(null);
+    const [viewedIndex, setViewedIndex] = useState(null);
+    const [viewing, setViewing] = useState(false);
+   
+    const storeInv = useSelector(state => state.onlineStore.storeInventory);
+    const stockedStatus = useSelector(state => state.onlineStore.inStockStatus);
+    const error = useSelector(state => state.onlineStore.error);
+    const firstLoad = useSelector(state => state.onlineStore.firstLoad);
 
-    componentDidMount(){
-        // Initial load, sets items, if user is not signed in and is the very first load
-        if (this.props.firstLoad) {
-            this.props.initStoreInventory();
+    const dispatch = useDispatch();
+
+    const addItemToCart = itemID => dispatch(action.addItemToCart(itemID));
+    const removeItemFromCart = itemID => dispatch(action.removeItemFromCart(itemID));
+    const initStoreInventory = useCallback(() => dispatch(action.fetchStoreInventory()), [dispatch])
+
+    useEffect(()=>{
+        if (firstLoad) {
+            initStoreInventory();
         }
-    }
+    }, [initStoreInventory, firstLoad]);
+
     // Item displayed when view button clicked
-    viewItemHandler = (id) => {
+    const viewItemHandler = (id) => {
         // Find the index that matches the ID of the name to be mutated
-        const ItemIndex = this.props.storeInv.findIndex(p => {
+        const itemIndex = storeInv.findIndex(p => {
           return p.itemID === id;
         });
         // Find that item that matches store inventory ID
-        const newItem = {
-            ...this.props.storeInv[ItemIndex]
-        }
-        // Set state.. (show item, turn on backdrop, viewing state is also on)
-        this.setState({
-            viewedItem: newItem,
-            viewedIndex: ItemIndex, 
-            viewing: !this.state.viewing, 
-        });
+        const newItem = { ...storeInv[itemIndex] }
+        setViewedItem(newItem);
+        setViewedIndex(itemIndex);
+        setViewing(!viewing);
     }
     // Exits out of item view
-    unviewItemHandler = () => {
-        this.setState({viewing: !this.state.viewing, viewedItem: null, viewedIndex: null})
+    const unviewItemHandler = () => {
+        setViewedItem(null);
+        setViewedIndex(null);
+        setViewing(!viewing);
     }
     // Proceeds to checkout (buttons in item view)
-    proceedToCheckout = () => {   
-        this.props.history.push('/checkout');
-    }
-    
-    render(){
-        // Error message if database fails to fetch items
-        let errorMessage = "Failed to fetch store items. Try refreshing"
-        // Individual item view 
-        let itemView = null;
-        // All store items, normal display 
-        let storeItems = this.props.error ? 
-            <div className={classes.StoreError}>
-                <Modal show={this.props.error}> 
-                    {errorMessage}
-                </Modal>
-            </div>
-            : <Spinner />
-        // Store items have loaded   
-        if (this.props.storeInv) {
-            storeItems = (<StoreItems 
-                items={this.props.storeInv}
-                testRemove={this.props.removeItemFromCart}
-                viewItem={this.viewItemHandler}
-                addToCart={this.props.addItemToCart} 
-                stockedStatus={this.props.stockedStatus} />
-                );
-            // If they are viewing an item (click on view button)
-            if (this.state.viewing) {
-                itemView =  
-                    <ItemView 
-                        items={this.state.viewedItem}
-                        clicked={this.unviewItemHandler}
-                        addToCart={this.props.addItemToCart}
-                        viewedIndex={this.state.viewedIndex} 
-                        stockedStatus={this.props.stockedStatus}
-                        toCheckout={this.proceedToCheckout} />
+    const proceedToCheckout = () => {   
+        props.history.push('/checkout');
+    }   
+    // Error message if database fails to fetch items
+    let errorMessage = "Failed to fetch store items. Try refreshing";
+    // Individual item view 
+    let itemView = null;
+    // All store items, normal display 
+    let storeItems = error 
+        ? <div className={classes.StoreError}>
+            <Modal show={error}> 
+                {errorMessage}
+            </Modal>
+        </div>
+        : <Spinner />
+    // Store items have loaded   
+    if (storeInv) {
+        storeItems = (<StoreItems 
+            items={storeInv}
+            testRemove={removeItemFromCart}
+            viewItem={viewItemHandler}
+            addToCart={addItemToCart} 
+            stockedStatus={stockedStatus} />
+        );
+        // If they are viewing an item (click on view button)
+        if (viewing) {
+            itemView =  
+                <ItemView 
+                    items={viewedItem}
+                    clicked={unviewItemHandler}
+                    addToCart={addItemToCart}
+                    viewedIndex={viewedIndex} 
+                    stockedStatus={stockedStatus}
+                    toCheckout={proceedToCheckout} />
             }    
         }
-        return(
-            <main className={classes.Store}>
+        return (
+            <section className={classes.Store}>
                 <Backdrop 
-                    show={this.state.viewing}
-                    clicked={this.unviewItemHandler} />
+                    show={viewing}
+                    clicked={unviewItemHandler} />
                 {itemView}
                 {storeItems}  
-            </main>);
-    }
+            </section>
+        );
 }
 
-const mapStateToProps = state => {
-    return {
-        storeInv: state.onlineStore.storeInventory,
-        cart: state.onlineStore.cart,
-        totalPrice: state.onlineStore.totalPrice,
-        invStatus: state.onlineStore.itemInvCount,
-        stockedStatus: state.onlineStore.inStockStatus,
-        error: state.onlineStore.error,
-        firstLoad: state.onlineStore.firstLoad,
-        isAuthenticated: state.auth.token !== null,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addItemToCart: (itemID) => dispatch(action.addItemToCart(itemID)),
-        removeItemFromCart: (itemID) => dispatch(action.removeItemFromCart(itemID)),
-        initStoreInventory: () => dispatch(action.fetchStoreInventory()),
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Store);
+export default Store;

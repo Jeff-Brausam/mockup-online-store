@@ -1,7 +1,6 @@
 import * as actionType from './actionsType';
 import axios from 'axios';
 
-
 export const removeAllOfItemType = (itemID) => {
     return {
         type: actionType.REMOVE_ALL_OF_ITEM_TYPE,
@@ -51,7 +50,6 @@ export const fetchOrderFailed = (error) => {
 
 export const fetchOrderStart = (token, userId) => {
     return dispatch => {
-        // dispatch(fetchOrderStart());
         const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
         axios.get('https://mockup-online-store.firebaseio.com/orders.json'  + queryParams)
         .then(response => {
@@ -62,11 +60,9 @@ export const fetchOrderStart = (token, userId) => {
                     id: [key]})
             }
             dispatch(fetchOrderSuccess(fetchedOrders))
-
         })
         .catch(error => {
-            // Handle errors
             dispatch(fetchOrderFailed(error))
         });
-};
+    };
 }

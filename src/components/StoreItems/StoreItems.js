@@ -1,11 +1,8 @@
 import React from 'react';
-
-import classes from './StoreItems.module.css';
 import StoreItem from './StoreItem/StoreItem';
-
+import classes from './StoreItems.module.css';
 
 const storeItems = (props) => {
-    // Take the store items, create a array of StoreItems
     const items = props.items.map((item, index)=>
         <StoreItem 
         name={item.name} 
@@ -18,7 +15,7 @@ const storeItems = (props) => {
         addToCart={props.addToCart}
         stockedStatus={props.stockedStatus}/>
         );
-
+        
     return(
         <div className={classes.StoreItems}>
             {items}       

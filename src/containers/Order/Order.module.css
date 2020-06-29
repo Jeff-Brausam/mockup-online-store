@@ -32,19 +32,43 @@ hr {
 
 .ItemsContainer {
     display: flex;
+    font-size: 1rem;
     width: 70%;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 0 auto;
     border: 1px solid rgb(0,0,0,.3);
     padding: 0;
+}
+
+.ItemsContainer p {
+    margin: 0 2rem;
+    padding: 1rem;
+    width: 50%;
 }
 
 .ItemsContainer:nth-child(even) {
     background: #eee
 }
 
+@media (max-width: 768px) {
+    .OrderContainer {
+        width: 90%;
+    }
+    .ItemsContainer {
+        display: flex;
+        font-size: .9rem;
+        width: 90%;
+    }
+}
+
+
 @media (max-width: 500px) {
     .OrderContainer {
+        width: 90%;
+    }
+    .ItemsContainer {
+        display: flex;
+        font-size: .8rem;
         width: 90%;
     }
 }

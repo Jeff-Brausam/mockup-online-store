@@ -1,10 +1,11 @@
-.Order {
+.CartItem {
     width: 45%;
     box-shadow: 0 2px 4px rgba(0,0,0,.5);
     padding: .4rem;
     margin: 0 auto;
 }
-.Order div:first-child {
+
+.CartItem div:first-child {
     width: 40%;
     display: flex;
     justify-content: center;
@@ -14,20 +15,20 @@
     border: none;
 }
 
-.Order div {
+.CartItem div {
     width: 40%;
     height: 6rem;
     position: relative;
     border-left: 1px solid rgba(0,0,0,.3);
 }
 
-.Order span {
+.CartItem span {
     display: flex;
     justify-content: space-around;
 }
 
 
-.Order img {
+.CartItem img {
     max-width: 100%;
     max-height: 100%; 
     object-fit: cover;
@@ -36,7 +37,7 @@
 .RemoveAll {
     font-size: 1.2rem;
     border: none;
-    background: white;
+    background: transparent;
     position: absolute;
     right: 0;
 }
@@ -48,7 +49,7 @@
 
 
 @media (max-width: 1024px) {
-    .Order {
+    .CartItem {
         width: 60%;
     }
     .RemoveAll {
@@ -57,23 +58,23 @@
 }
 
 @media (max-width: 768px) {
-    .Order {
+    .CartItem {
         width: 80%;   
     }
-    .Order p {
+    .CartItem p {
         font-size: .9rem;
     }
 }
 
 @media (max-width: 500px) {
-    .Order {
+    .CartItem {
         width: 90%;
     }
-    .Order p {
+    .CartItem p {
         font-size: .8rem;
     }
     .RemoveAll {
-        font-size: 1rem;
+        font-size: 0.7rem;
     }
 
 }

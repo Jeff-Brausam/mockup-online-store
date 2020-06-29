@@ -1,42 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { BrowserRouter } from 'react-router-dom';
 import onlineStore from './store/reducers/onlineStore';
 import orders from './store/reducers/orders';
 import auth from './store/reducers/auth';
-
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
 
 const rootReducer = combineReducers({
   onlineStore: onlineStore,
   orders: orders,
-  auth: auth
-})
+  auth: auth,
+});
 
-
-const store = createStore(
-  rootReducer, 
+export const store = createStore(
+  rootReducer,
   composeEnhancers(applyMiddleware(thunk)));
 
 
 const app = (  
   <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <App />
+      </BrowserRouter>
   </Provider>  
-  );
-
+);
 
 ReactDOM.render(
   <React.StrictMode>
