@@ -17,7 +17,7 @@
     justify-content: center;
     position: relative;
 }
-/* Title */
+
 .ItemView h3 {
     margin-top: 0;
     font-size: 1.5rem;
@@ -35,7 +35,6 @@
     color: rgba(0,0,0,.6);
 }
 
-
 .ItemView button {
     position: absolute;
     right: 0;
@@ -48,7 +47,6 @@
 }
 .ItemView img {
     max-width: 100%;
-    /* max-height: 100%; */
     height: auto;
     object-fit: cover;
 }
@@ -76,9 +74,6 @@
     line-height: 1rem;
 }
 
-
-
-
 @media (max-width: 768px) {
     .ItemView {
         width: 80%;
@@ -94,8 +89,26 @@
         width: 90%;
         left: 5%;
         top: 10%;
+        font-size: .8rem;
     }
     .ItemView span {
         position: static;
+    }
+    .ItemView h3 {
+        margin-top: 0;
+        font-size: 1.4rem;
+        width: 80%;
+    }
+    .ImgContainer {
+        width: 30%;
+    }
+    .Description {
+        width: 80%;
+        margin: auto;
+    }
+    
+    .ItemView strong {
+        font-size: 1.3rem;
+        font-weight: 500;
     }
 }
