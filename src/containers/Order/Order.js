@@ -39,8 +39,6 @@ const Order = props => {
     }
     return (
         <div className={classes.Order}>
-            <h3>MY ORDERS</h3>
-            <hr />
             {order}
         </div> );
 }

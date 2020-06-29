@@ -45,7 +45,7 @@ const Checkout = props => {
             tempAdd={addItemToCart} />
 
     // No items = Empty Cart
-    let userOrder = <p>Cart Empty</p>
+    let userOrder = <h3>Cart Empty</h3>
     // Items in the cart, display orders
     if (cart.length >= 1) {
         userOrder = (
@@ -68,8 +68,6 @@ const Checkout = props => {
     }
     return (
         <section className={classes.Checkout}> 
-            <h3>YOUR CART</h3>
-            <hr />
             {userOrder}
             <Route path={props.match.path + "/contact-form"}
                 render={(props)=>(

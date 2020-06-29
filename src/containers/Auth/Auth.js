@@ -119,12 +119,12 @@ const Auth = props => {
     return (
         <section className={classes.Auth}>
             {authRedirect}
-            <h3>{needsSignUp 
-                ? 'SIGN UP' 
-                : 'SIGN IN'}
-            </h3>
-            <hr />
+            
             <div className={classes.SignUpContainer}> 
+                <h3>{needsSignUp 
+                    ? 'SIGN UP' 
+                    : 'SIGN IN'}
+                </h3>
                 {errorMessage}
                 <form onSubmit={submitHandler}>
                     {form}
