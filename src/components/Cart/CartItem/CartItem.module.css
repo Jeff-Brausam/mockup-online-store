@@ -3,6 +3,10 @@
     box-shadow: 0 2px 4px rgba(0,0,0,.5);
     padding: .4rem;
     margin: 0 auto;
+    margin-top: .5rem;
+}
+
+.CartItem:first-child {
     margin-top: 4rem;
 }
 
