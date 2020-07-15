@@ -5,19 +5,13 @@
     margin: 0 auto;
 }
 
-/* .Auth div {
-    margin: 0 auto;
-} */
-
 .Auth h3 {
     margin-top: 0;
     padding-top: 2rem;
     font-weight: 400;
-    width: 25%;
     margin: 0 auto;
     font-size: 2rem;
 }
-
 
 hr {
     border: 0;
