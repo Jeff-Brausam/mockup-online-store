@@ -1,107 +1,106 @@
 .Button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    font: inherit;
-    font-size: .7rem;
-    font-weight: 700;
-    padding: .4rem;
-    color: rgb(0, 160, 200);
-    background-color: white;
-    border: 1px solid rgba(0,0,0,0.3);
-    border-radius: 5%;
-    box-shadow: 0 2px 3px rgba(0,0,0, 0.15);
-    transform: translateY(0);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.4rem;
+  color: rgb(0, 160, 200);
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 5%;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
 }
 .Button:hover {
-    color: rgb(0, 190, 238);
+  color: rgb(0, 190, 238);
 }
 .Button:disabled {
-    background-color: #C7C6C6;
-    cursor: not-allowed;
-    border: 1px solid #ccc;
-    color: #888888;
+  background-color: #c7c6c6;
+  cursor: not-allowed;
+  border: 1px solid #ccc;
+  color: #888888;
 }
 .Button:active {
-    box-shadow: 0 2px 3px rgba(0,0,0,.6);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
 }
 
-
 .ViewItemAdd {
-    position: absolute;
-    bottom: 3.2rem;
+  position: absolute;
+  bottom: 3.2rem;
 }
 
 .ViewItemCheckout {
-    position: absolute;
-    bottom: .7rem;
+  position: absolute;
+  bottom: 0.7rem;
 }
 .ViewItemCheckout:hover {
-    color: rgb(0, 190, 238);
-} 
+  color: rgb(0, 190, 238);
+}
 
 .SubmitSignIn {
-    margin-top: 1.5rem;
-    padding: .5rem 2rem;
+  margin-top: 1.5rem;
+  padding: 0.5rem 2rem;
 }
 
 .SignUpSwitch {
-    margin-top: 1.5rem;
-    border: none;
-    box-shadow: none;
+  margin-top: 1.5rem;
+  border: none;
+  box-shadow: none;
 }
 .SignUpSwitch:active {
-    box-shadow:none;
+  box-shadow: none;
 }
 
 .CartQuantity {
-    padding: 0 .5rem;
-    font-size: 1.2rem;
-    border: none;
-    box-shadow: none;
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+  border: none;
+  box-shadow: none;
 }
 
 .CartQuantity:disabled {
-    background-color: white;
-    border: none;
+  background-color: white;
+  border: none;
 }
 .CartQuantity:active {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .Cancel {
-    color: rgb(180, 0, 0);
-    font-weight: 700;
-    margin-right: 2rem;
+  color: rgb(180, 0, 0);
+  font-weight: 700;
+  margin-right: 2rem;
 }
 .Cancel:hover {
-    color: rgb(255, 0, 0);
+  color: rgb(255, 0, 0);
 }
 .Cancel:active {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .Continue {
-    color: green;
-    font-weight: 700;
+  color: green;
+  font-weight: 700;
 }
 .Continue:hover {
-    color: rgb(0, 206, 0);
+  color: rgb(0, 206, 0);
 }
 .Continue:active {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .ContactFormSubmit {
-    padding: .7rem;
-    margin-top: 1.5rem;
+  padding: 0.7rem;
+  margin-top: 1.5rem;
 }
 
 @media (max-width: 500px) {
-    .Button {
-        padding: .3rem;
-    }
-    .CartQuantity {
-        padding: 0 .5rem;
-    }
+  .Button {
+    padding: 0.3rem;
+  }
+  .CartQuantity {
+    padding: 0 0.5rem;
+  }
 }

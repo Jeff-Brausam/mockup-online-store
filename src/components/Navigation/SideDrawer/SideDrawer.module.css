@@ -1,48 +1,47 @@
 .SideDrawer {
-    position: fixed;
-    width: 280px;
-    max-width: 70%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 200;
-    background-color: black;
-    padding: 16px 16px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease-out;
+  position: fixed;
+  width: 280px;
+  max-width: 70%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  background-color: black;
+  padding: 16px 16px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease-out;
 }
 
 .SideDrawer img {
-    width: 70%;
-    margin: .5rem 0 2rem 0;
-    filter: invert(1);
-    padding: 2rem 0 5rem 0;
+  width: 70%;
+  margin: 0.5rem 0 2rem 0;
+  filter: invert(1);
+  padding: 2rem 0 5rem 0;
 }
 
 .SideDrawer button {
-    outline: none;
-    border: none;
-    display: block;
-    font-size: 1.5rem;
-    left: 0;
-    background-color: transparent;
-    color: white
+  outline: none;
+  border: none;
+  display: block;
+  font-size: 1.5rem;
+  left: 0;
+  background-color: transparent;
+  color: white;
 }
 .SideDrawer button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 @media (min-width: 500px) {
-    .SideDrawer {
-        display: none;
-    }
-
+  .SideDrawer {
+    display: none;
+  }
 }
 
 .Open {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 .Close {
-    transform: translateX(-100%);
+  transform: translateX(-100%);
 }

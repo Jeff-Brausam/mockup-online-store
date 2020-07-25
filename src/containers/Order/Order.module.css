@@ -1,60 +1,57 @@
 .Order {
-    background-color: white;
-    height: 100%;
-    min-height: 100vh;
-    width: 100%;
-    margin: 0 auto;
-    padding-bottom: 2rem;
+  background-color: white;
+  height: 100%;
+  min-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
 }
 
 .OrderContainer {
-    border: 1px solid rgba(0,0,0,.3);
-    width: 70%;
-    margin: 2rem auto;
-    box-shadow: 0 3px 5px rgba(0,0,0,.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  width: 70%;
+  margin: 2rem auto;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
 }
 
 .ItemsContainer {
-    display: flex;
-    font-size: 1rem;
-    width: 70%;
-    justify-content: space-between;
-    margin: 0 auto;
-    border: 1px solid rgb(0,0,0,.3);
-    padding: 0;
+  display: flex;
+  font-size: 1rem;
+  width: 70%;
+  justify-content: space-between;
+  margin: 0 auto;
+  border: 1px solid rgb(0, 0, 0, 0.3);
+  padding: 0;
 }
 
 .ItemsContainer p {
-    margin: 0 2rem;
-    padding: 1rem;
-    width: 50%;
+  margin: 0 2rem;
+  padding: 1rem;
+  width: 50%;
 }
 
 .ItemsContainer:nth-child(even) {
-    background: #eee
+  background: #eee;
 }
 
 @media (max-width: 768px) {
-    .OrderContainer {
-        width: 90%;
-    }
-    .ItemsContainer {
-        display: flex;
-        font-size: .9rem;
-        width: 90%;
-    }
+  .OrderContainer {
+    width: 90%;
+  }
+  .ItemsContainer {
+    display: flex;
+    font-size: 0.9rem;
+    width: 90%;
+  }
 }
-
 
 @media (max-width: 500px) {
-    .OrderContainer {
-        width: 90%;
-    }
-    .ItemsContainer {
-        display: flex;
-        font-size: .8rem;
-        width: 90%;
-    }
+  .OrderContainer {
+    width: 90%;
+  }
+  .ItemsContainer {
+    display: flex;
+    font-size: 0.8rem;
+    width: 90%;
+  }
 }
-
-

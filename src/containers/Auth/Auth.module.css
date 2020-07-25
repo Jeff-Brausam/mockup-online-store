@@ -1,59 +1,63 @@
 .Auth {
-    background-color: white;
-    height: 100vh;
-    width: 100%;
-    margin: 0 auto;
+  background-color: white;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .Auth h3 {
-    margin-top: 0;
-    padding-top: 2rem;
-    font-weight: 400;
-    margin: 0 auto;
-    font-size: 2rem;
+  margin-top: 0;
+  padding-top: 2rem;
+  font-weight: 400;
+  margin: 0 auto;
+  font-size: 2rem;
 }
 
 hr {
-    border: 0;
-    height: 1px;
-    width: 50%;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-    margin-bottom: 2rem;
+  border: 0;
+  height: 1px;
+  width: 50%;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+  margin-bottom: 2rem;
 }
 
 .Auth form {
-    padding-top: 2rem;
-    display: block;
-    width: 70%;
-    margin: 0 auto;
-    border-radius: .2rem;
+  padding-top: 2rem;
+  display: block;
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 0.2rem;
 }
 
 .SignUpContainer {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
-    width: 40%;
-    padding: 2rem 0;
-    margin: 4rem auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  width: 40%;
+  padding: 2rem 0;
+  margin: 4rem auto;
 }
 
 .FormError {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 @media (max-width: 1024px) {
-    .SignUpContainer {
-        width: 70%;   
-    }
-} 
+  .SignUpContainer {
+    width: 70%;
+  }
+}
 
 @media (max-width: 768px) {
-    .SignUpContainer {
-        width: 60%;   
-    }
+  .SignUpContainer {
+    width: 60%;
+  }
 }
 @media (max-width: 500px) {
-    .SignUpContainer {
-        width: 80%;   
-    }
+  .SignUpContainer {
+    width: 80%;
+  }
 }
-

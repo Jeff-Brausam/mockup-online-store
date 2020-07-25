@@ -1,85 +1,82 @@
 .CartItem {
-    width: 45%;
-    box-shadow: 0 2px 4px rgba(0,0,0,.5);
-    padding: .4rem;
-    margin: 0 auto;
-    margin-top: .5rem;
+  width: 45%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 0.4rem;
+  margin: 0 auto;
+  margin-top: 0.5rem;
 }
 
 .CartItem:first-child {
-    margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 .CartItem div:first-child {
-    width: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 6rem;
-    position: relative;
-    border: none;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 6rem;
+  position: relative;
+  border: none;
 }
 
 .CartItem div {
-    width: 40%;
-    height: 6rem;
-    position: relative;
-    border-left: 1px solid rgba(0,0,0,.3);
+  width: 40%;
+  height: 6rem;
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.3);
 }
 
 .CartItem span {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
-
 .CartItem img {
-    max-width: 100%;
-    max-height: 100%; 
-    object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
 }
 
 .RemoveAll {
-    font-size: 1.2rem;
-    border: none;
-    background: transparent;
-    position: absolute;
-    right: 0;
+  font-size: 1.2rem;
+  border: none;
+  background: transparent;
+  position: absolute;
+  right: 0;
 }
 
 .RemoveAll:hover {
-    cursor: pointer;
-    color: rgba(0,0,0,.6);
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.6);
 }
 
-
 @media (max-width: 1024px) {
-    .CartItem {
-        width: 60%;
-    }
-    .RemoveAll {
-        font-size: 1rem;
-    } 
+  .CartItem {
+    width: 60%;
+  }
+  .RemoveAll {
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 768px) {
-    .CartItem {
-        width: 80%;   
-    }
-    .CartItem p {
-        font-size: .9rem;
-    }
+  .CartItem {
+    width: 80%;
+  }
+  .CartItem p {
+    font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 500px) {
-    .CartItem {
-        width: 90%;
-    }
-    .CartItem p {
-        font-size: .8rem;
-    }
-    .RemoveAll {
-        font-size: 0.7rem;
-    }
-
+  .CartItem {
+    width: 90%;
+  }
+  .CartItem p {
+    font-size: 0.8rem;
+  }
+  .RemoveAll {
+    font-size: 0.7rem;
+  }
 }
