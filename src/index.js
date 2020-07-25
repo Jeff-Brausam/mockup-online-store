@@ -1,19 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import onlineStore from './store/reducers/onlineStore';
-import orders from './store/reducers/orders';
-import auth from './store/reducers/auth';
+import React from "react";
+import ReactDOM from "react-dom";
+import {BrowserRouter} from "react-router-dom";
+import {createStore, applyMiddleware, compose, combineReducers} from "redux";
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import "./index.css";
+import App from "./App";
+import * as serviceWorker from "./serviceWorker";
+import onlineStore from "./store/reducers/onlineStore";
+import orders from "./store/reducers/orders";
+import auth from "./store/reducers/auth";
 
-const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;
+const composeEnhancers =
+  process.env.NODE_ENV === "development"
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null || compose;
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   onlineStore: onlineStore,
   orders: orders,
   auth: auth,
@@ -21,22 +24,20 @@ const rootReducer = combineReducers({
 
 export const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk)));
+  composeEnhancers(applyMiddleware(thunk)),
+);
 
-
-const app = (  
+const app = (
   <Provider store={store}>
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <App />
-      </BrowserRouter>
-  </Provider>  
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <App />
+    </BrowserRouter>
+  </Provider>
 );
 
 ReactDOM.render(
-  <React.StrictMode>
-    {app}
-  </React.StrictMode>,
-  document.getElementById('root')
+  <React.StrictMode>{app}</React.StrictMode>,
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

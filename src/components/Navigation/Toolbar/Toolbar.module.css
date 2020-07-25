@@ -1,41 +1,40 @@
 .Toolbar {
-    height: 7vh;
-    background: white;
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 5px rgba(0,0,0,.2);
-    background: rgb(0,83,138);
+  height: 7vh;
+  background: white;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: rgb(0, 83, 138);
 }
 
 .Logo {
-    width: 6rem;
-    padding: .5rem;
-    position: absolute;
-    left: 4%;
-    top: 10%;
-    box-sizing: border-box;
-    filter:invert(1);
+  width: 6rem;
+  padding: 0.5rem;
+  position: absolute;
+  left: 4%;
+  top: 10%;
+  box-sizing: border-box;
+  filter: invert(1);
 }
 
 @media (max-width: 500px) {
-    .Logo {
-        width: 6rem;
-        padding: 1rem;
-        top: 0;
-        position: absolute;
-        box-sizing: border-box;
-        filter:invert(1);
-    }
+  .Logo {
+    width: 6rem;
+    padding: 1rem;
+    top: 0;
+    position: absolute;
+    box-sizing: border-box;
+    filter: invert(1);
+  }
 }
 
 @media (max-width: 499px) {
-    .DesktopOnly {
-        display: none;
-    }
+  .DesktopOnly {
+    display: none;
+  }
 }
-

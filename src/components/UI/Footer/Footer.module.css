@@ -1,13 +1,13 @@
 .Footer {
-    height: 5vh;
-    background: rgb(0,83,138);
-    margin-top: 0; 
-    font-size: .7rem;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
+  height: 5vh;
+  background: rgb(0, 83, 138);
+  margin-top: 0;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .Footer p {
-    color: white;
+  color: white;
 }

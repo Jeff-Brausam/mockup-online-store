@@ -1,17 +1,17 @@
 .Order {
-    width: 80%;
-    box-shadow: 0 2px 4px rgba(0,0,0,.2);
-    padding: .4rem;
-    margin: 0 auto;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 0.4rem;
+  margin: 0 auto;
 }
 
 .Order div {
-    border: 1px solid #000;
-    width: 30%;
-    /* height: 100%; */
+  border: 1px solid #000;
+  width: 30%;
+  /* height: 100%; */
 }
 
 .Order span {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }

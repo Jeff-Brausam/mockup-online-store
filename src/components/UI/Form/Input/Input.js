@@ -1,53 +1,61 @@
-import React from 'react';
-import classes from './Input.module.css';
+import React from "react";
+import classes from "./Input.module.css";
 
 const input = (props) => {
-    let input = null
-    const inputClasses = [classes.InputElement];
+  let input = null;
+  const inputClasses = [classes.InputElement];
 
-    if ( props.invalid && props.shouldValidate && props.touched) { 
-        inputClasses.push(classes.Invalid);
-    }
+  if (props.invalid && props.shouldValidate && props.touched) {
+    inputClasses.push(classes.Invalid);
+  }
 
-    switch ( props.type ) {
-        case ('input'):
-            input = <input 
-                {...props.config}
-                className={inputClasses.join(' ')}
-                value={props.value}
-                onChange={props.changed}/>
-            break;
-        case ('textarea'): 
-            input = <input 
-                {...props.config}
-                className={inputClasses.join(' ')}
-                value={props.value}
-                onChange={props.changed} />
-            break;
-        case ('select'):
-            input = (
-                <select
-                // value={props.value}
-                onChange={props.changed} 
-                className={inputClasses.join(' ')}
-                defaultValue={'Fastest'}>
-                    {props.config.options.map(option => (
-                        <option key={option.value} value={option.value}>
-                            {option.displayValue}
-                        </option>))}
-                </select>) 
-                break;
-        default: input = <input 
-                    {...props.config}
-                    className={classes.InputElement} 
-                    value={props.value} />
-    }
+  switch (props.type) {
+    case "input":
+      input = (
+        <input
+          {...props.config}
+          className={inputClasses.join(" ")}
+          value={props.value}
+          onChange={props.changed}
+        />
+      );
+      break;
+    case "textarea":
+      input = (
+        <input
+          {...props.config}
+          className={inputClasses.join(" ")}
+          value={props.value}
+          onChange={props.changed}
+        />
+      );
+      break;
+    case "select":
+      input = (
+        <select
+          // value={props.value}
+          onChange={props.changed}
+          className={inputClasses.join(" ")}
+          defaultValue={"Fastest"}>
+          {props.config.options.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.displayValue}
+            </option>
+          ))}
+        </select>
+      );
+      break;
+    default:
+      input = (
+        <input
+          {...props.config}
+          className={classes.InputElement}
+          value={props.value}
+        />
+      );
+  }
 
-    return (
-        <div className={classes.Input}>
-            {input}
-        </div>
-    );
-}
- 
+  return <div className={classes.Input}>{input}</div>;
+};
+
 export default input;
