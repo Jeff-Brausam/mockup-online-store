@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useCallback} from "react";
-import {useSelector, useDispatch} from "react-redux";
+import React, { useState, useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import StoreItems from "../../components/StoreItems/StoreItems";
 import ItemView from "../../components/StoreItems/ItemView/ItemView";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
@@ -9,53 +9,56 @@ import classes from "./Store.module.css";
 import * as action from "../../store/actions/index";
 
 export const Store = (props) => {
-  const [viewedItem, setViewedItem] = useState(null);
-  const [viewedIndex, setViewedIndex] = useState(null);
-  const [viewing, setViewing] = useState(false);
-
+  const dispatch = useDispatch();
   const storeInv = useSelector((state) => state.onlineStore.storeInventory);
   const stockedStatus = useSelector((state) => state.onlineStore.inStockStatus);
   const error = useSelector((state) => state.onlineStore.error);
   const firstLoad = useSelector((state) => state.onlineStore.firstLoad);
 
-  const dispatch = useDispatch();
-
-  const addItemToCart = (itemID) => dispatch(action.addItemToCart(itemID));
-  const removeItemFromCart = (itemID) =>
-    dispatch(action.removeItemFromCart(itemID));
   const initStoreInventory = useCallback(
     () => dispatch(action.fetchStoreInventory()),
     [dispatch],
   );
+  
+  const [viewedItem, setViewedItem] = useState(null);
+  const [viewedIndex, setViewedIndex] = useState(null);
+  const [viewing, setViewing] = useState(false);
 
   useEffect(() => {
     if (firstLoad) {
       initStoreInventory();
     }
   }, [initStoreInventory, firstLoad]);
+  
+  function addItemToCart(itemID) {
+    dispatch(action.addItemToCart(itemID));
+  }
 
-  // Item displayed when view button clicked
-  const viewItemHandler = (id) => {
-    // Find the index that matches the ID of the name to be mutated
-    const itemIndex = storeInv.findIndex((p) => {
-      return p.itemID === id;
+  function removeItemFromCart(itemID) {
+    dispatch(action.removeItemFromCart(itemID))
+  }
+
+  function viewItemHandler(id) {
+    const itemIndex = storeInv.findIndex((storeItem) => {
+      return storeItem.itemId === id
     });
-    // Find that item that matches store inventory ID
-    const newItem = {...storeInv[itemIndex]};
-    setViewedItem(newItem);
+    const selectedItem = { ...storeInv[itemIndex] };
+    
+    setViewedItem(selectedItem);
     setViewedIndex(itemIndex);
     setViewing(!viewing);
   };
-  // Exits out of item view
-  const unviewItemHandler = () => {
+
+  function exitViewItemHandler() {
     setViewedItem(null);
     setViewedIndex(null);
     setViewing(!viewing);
-  };
-  // Proceeds to checkout (buttons in item view)
-  const proceedToCheckout = () => {
+  }
+
+  function proceedToCheckout() {
     props.history.push("/checkout");
   };
+
   // Error message if database fails to fetch items
   let errorMessage = "Failed to fetch store items. Try refreshing";
   // Individual item view
@@ -84,7 +87,7 @@ export const Store = (props) => {
       itemView = (
         <ItemView
           items={viewedItem}
-          clicked={unviewItemHandler}
+          clicked={exitViewItemHandler}
           addToCart={addItemToCart}
           viewedIndex={viewedIndex}
           stockedStatus={stockedStatus}
@@ -95,7 +98,7 @@ export const Store = (props) => {
   }
   return (
     <section className={classes.Store}>
-      <Backdrop show={viewing} clicked={unviewItemHandler} />
+      <Backdrop show={viewing} clicked={exitViewItemHandler} />
       {itemView}
       {storeItems}
     </section>

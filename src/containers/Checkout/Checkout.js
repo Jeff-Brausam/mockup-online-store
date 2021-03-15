@@ -7,7 +7,7 @@ import Button from "../../components/UI/Button/Button";
 import classes from "./Checkout.module.css";
 import * as action from "../../store/actions/index";
 
-const Checkout = (props) => {
+const Checkout = ({history, match}) => {
   const storeInv = useSelector((state) => state.onlineStore.storeInventory);
   const cart = useSelector((state) => state.onlineStore.cart);
   const totalPrice = useSelector((state) => state.onlineStore.totalPrice);
@@ -16,27 +16,33 @@ const Checkout = (props) => {
 
   const dispatch = useDispatch();
 
-  const addItemToCart = (itemID) => dispatch(action.addItemToCart(itemID));
-  const removeItemFromCart = (itemID) =>
+  function addItemToCart(itemID) {
+    dispatch(action.addItemToCart(itemID));
+  }
+  
+  function removeItemFromCart(itemID) {
     dispatch(action.removeItemFromCart(itemID));
-  const removeAllOfThisItem = (itemID) =>
+  }
+  
+  function removeAllOfThisItem(itemID) {
     dispatch(action.removeAllOfItemType(itemID));
+  }
+  
+  function cancelOrder() {
+    history.goBack();
+  };
 
+  function continueWithOrder() {
+    history.replace("/checkout/contact-form");
+  };
+  
+  function proceedToSignUp() {
+    history.push("/signup");
+  };
+  
   if (cart.length === 0) {
     localStorage.removeItem("reducedCart");
   }
-
-  const cancelOrder = () => {
-    props.history.goBack();
-  };
-
-  const continueWithOrder = () => {
-    props.history.replace("/checkout/contact-form");
-  };
-
-  const proceedToSignUp = () => {
-    props.history.push("/signup");
-  };
 
   let orders = (
     <Cart
@@ -78,7 +84,7 @@ const Checkout = (props) => {
     <section className={classes.Checkout}>
       {userOrder}
       <Route
-        path={props.match.path + "/contact-form"}
+        path={match.path + "/contact-form"}
         render={(props) => <ContactForm price={totalPrice} {...props} />}
       />
     </section>

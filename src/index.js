@@ -11,10 +11,7 @@ import onlineStore from "./store/reducers/onlineStore";
 import orders from "./store/reducers/orders";
 import auth from "./store/reducers/auth";
 
-const composeEnhancers =
-  process.env.NODE_ENV === "development"
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    : null || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const rootReducer = combineReducers({
   onlineStore: onlineStore,

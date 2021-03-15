@@ -1,53 +1,51 @@
 import React, {useState, useLayoutEffect} from "react";
 import CartItem from "./CartItem/CartItem";
 
-const Cart = (props) => {
-  const [reducedCart, setReducedCart] = useState(props.cart);
-
+const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, tempAdd}) => {
+  const [userCart, setUserCart] = useState(cart);
+  
   useLayoutEffect(() => {
-    let value = props.cart.reduce((acc, item) => {
-      // If the item has not appeared already
-      if (!acc.includes(item)) {
-        // Add to array
-        acc.push(item);
-        // Sort to make it in alphabetical order
-        acc.sort((a, b) => a.name.localeCompare(b.name));
+    let sortedCart = cart.reduce((cart, item) => {
+      if (!cart.includes(item)) {
+        cart.push(item);
+        cart.sort((a, b) => a.name.localeCompare(b.name));
       } else {
-        return acc;
+        return cart;
       }
-      return acc;
-    }, []);
-    setReducedCart(value);
-    return () => (value = null);
-  }, [props.cart]);
+        return cart;
+      }, []);
+    setUserCart(sortedCart);
+    return () => sortedCart = null;
+  }, [cart]);
+
   // Gets the quantity
-  let quantity = props.cart.reduce((curCart, item) => {
-    if (item.name in curCart) {
-      curCart[item.name]++;
-    } else {
-      curCart[item.name] = 1;
-    }
-    return curCart;
+  const quantity = cart.reduce((cart, item) => {
+      if (item.name in cart) {
+        cart[item.name]++;
+      } else {
+        cart[item.name] = 1;
+      }
+      return cart;
   }, []);
 
   let orders = null;
-
-  orders = reducedCart.map((el, ind) => {
+  
+  orders = userCart.map((el, ind) => {
     return (
       <CartItem
         name={el.name}
         key={ind}
-        index={props.storeInv.findIndex((p) => {
+        index={storeInv.findIndex((p) => {
           return p.itemID === el.itemID;
         })}
         price={el.price}
         img={el.imgURL}
         id={el.itemID}
-        inStock={props.inStock}
-        removeAllofItem={props.removeAllofItem}
+        inStock={inStock}
+        removeAllofItem={removeAllofItem}
         quantity={quantity[el.name]}
-        tempRemove={props.tempRemove}
-        tempAdd={props.tempAdd}
+        tempRemove={tempRemove}
+        tempAdd={tempAdd}
       />
     );
   });

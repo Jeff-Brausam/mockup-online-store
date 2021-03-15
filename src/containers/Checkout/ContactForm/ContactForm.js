@@ -16,9 +16,13 @@ const ContactForm = (props) => {
 
   const dispatch = useDispatch();
 
-  const sendStoreOrder = (order, token) =>
+  function sendStoreOrder(order, token) {
     dispatch(action.sendStoreOrder(order, token));
-  const initStoreInventory = () => dispatch(action.fetchStoreInventory());
+  }
+  
+  function initStoreInventory() {
+    dispatch(action.fetchStoreInventory());
+  }
 
   const [orderForm, setOrderForm] = useState({
     name: {

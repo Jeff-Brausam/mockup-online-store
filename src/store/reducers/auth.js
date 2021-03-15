@@ -9,11 +9,11 @@ const initalState = {
   authRedirectPath: "/",
 };
 
-const authStart = (state, action) => {
+function authStart(state, action) {
   return updateObject(state, {error: null, loading: true});
 };
 
-const authSuccess = (state, action) => {
+function authSuccess(state, action) {
   return updateObject(state, {
     token: action.idToken,
     userId: action.userId,
@@ -22,18 +22,18 @@ const authSuccess = (state, action) => {
   });
 };
 
-const authFail = (state, action) => {
+function authFail(state, action) {
   return updateObject(state, {
     error: action.error,
     loading: false,
   });
 };
 
-const authLogout = (state, action) => {
+function authLogout(state, action) {
   return updateObject(state, {token: null, userId: null});
 };
 
-const setAuthRedirectPath = (state, action) => {
+function setAuthRedirectPath (state, action) {
   return updateObject(state, {authRedirectPath: action.path});
 };
 

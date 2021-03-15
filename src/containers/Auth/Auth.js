@@ -77,16 +77,17 @@ export const Auth = (props) => {
     setControls(updatedControls);
   };
 
-  const switchAuthModeHandler = () => {
+  function switchAuthModeHandler() {
     setNeedsSignUp(!needsSignUp);
   };
 
-  const submitHandler = (event) => {
+  function submitHandler(event) {
     event.preventDefault();
     onAuth(controls.email.value, controls.password.value, needsSignUp);
   };
 
   const formElementsArray = [];
+
   for (let key in controls) {
     formElementsArray.push({
       id: key,
