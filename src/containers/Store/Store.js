@@ -8,7 +8,7 @@ import Modal from "../../components/UI/Modal/Modal";
 import classes from "./Store.module.css";
 import * as action from "../../store/actions/index";
 
-export const Store = (props) => {
+export const Store = ({history}) => {
   const dispatch = useDispatch();
   const storeInv = useSelector((state) => state.onlineStore.storeInventory);
   const stockedStatus = useSelector((state) => state.onlineStore.inStockStatus);
@@ -56,11 +56,12 @@ export const Store = (props) => {
   }
 
   function proceedToCheckout() {
-    props.history.push("/checkout");
+    history.push("/checkout");
   };
 
   // Error message if database fails to fetch items
   let errorMessage = "Failed to fetch store items. Try refreshing";
+  
   // Individual item view
   let itemView = null;
   // All store items, normal display

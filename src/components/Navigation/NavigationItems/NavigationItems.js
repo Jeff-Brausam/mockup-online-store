@@ -8,6 +8,7 @@ export const NavigationItems = (props) => {
   const isAuthenticated = useSelector((state) => state.auth.token !== null);
 
   let notification = null;
+  
   if (cart.length >= 1) {
     notification = (
       <span className={classes.Notification}>

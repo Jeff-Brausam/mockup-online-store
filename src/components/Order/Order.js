@@ -1,18 +1,18 @@
 import React from "react";
 import classes from "./Order.module.css";
 
-const order = (props) => {
+const Order = ({name, quantity, tempRemove, tempAdd, id}) => {
   return (
     <div className={classes.Order}>
       <span>
         <div>IMG</div>
         <div>
-          <p>{props.name}</p>
+          <p>{name}</p>
         </div>
         <div>
-          <p>Quantity: {props.quantity}</p>
-          <button onClick={() => props.tempRemove(props.id)}>-</button>
-          <button onClick={() => props.tempAdd(props.id)} disabled>
+          <p>Quantity: {quantity}</p>
+          <button onClick={() => tempRemove(id)}>-</button>
+          <button onClick={() => tempAdd(id)} disabled>
             +
           </button>
         </div>
@@ -21,4 +21,4 @@ const order = (props) => {
   );
 };
 
-export default order;
+export default Order;

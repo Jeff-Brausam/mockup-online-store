@@ -2,8 +2,8 @@ import React from "react";
 import StoreItem from "./StoreItem/StoreItem";
 import classes from "./StoreItems.module.css";
 
-export const StoreItems = (props) => {
-  const items = props.items.map((item, index) => (
+export const StoreItems = ({items, viewItem, addToCart, stockedStatus}) => {
+  const allItems = items.map((item, index) => (
     <StoreItem
       name={item.name}
       price={item.price.toLocaleString()}
@@ -11,13 +11,13 @@ export const StoreItems = (props) => {
       ind={index}
       id={item.itemID}
       imgURL={item.imgURL}
-      viewItem={props.viewItem}
-      addToCart={props.addToCart}
-      stockedStatus={props.stockedStatus}
+      viewItem={viewItem}
+      addToCart={addToCart}
+      stockedStatus={stockedStatus}
     />
   ));
 
-  return <div className={classes.StoreItems}>{items}</div>;
+  return <div className={classes.StoreItems}>{allItems}</div>;
 };
 
 export default StoreItems;

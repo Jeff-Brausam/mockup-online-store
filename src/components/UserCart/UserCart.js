@@ -2,35 +2,35 @@ import React from "react";
 import classes from "./UserCart.module.css";
 import Button from "../UI/Button/Button";
 
-const userCart = (props) => {
+const userCart = ({img, name, price, id, quantity, tempAdd, tempRemove, removeAllofItem, index, inStock}) => {
   return (
     <div className={classes.Order}>
       <span>
         <div className={classes.ImageContainer}>
-          <img src={props.img} alt={props.name} />
+          <img src={img} alt={name} />
         </div>
         <div>
-          <p>{props.name}</p>
+          <p>{name}</p>
           <p>
-            Price: <strong>${props.price}</strong>
+            Price: <strong>${price}</strong>
           </p>
         </div>
         <div>
           <button
             className={classes.RemoveAll}
-            onClick={() => props.removeAllofItem(props.id)}>
+            onClick={() => removeAllofItem(id)}>
             X
           </button>
-          <p>Quantity: {props.quantity}</p>
+          <p>Quantity: {quantity}</p>
           <Button
             btnType="CartQuantity"
-            clicked={() => props.tempRemove(props.id)}>
+            clicked={() => tempRemove(id)}>
             -
           </Button>
           <Button
             btnType="CartQuantity"
-            clicked={() => props.tempAdd(props.id)}
-            disabled={props.inStock[props.index] === false}>
+            clicked={() => tempAdd(id)}
+            disabled={inStock[index] === false}>
             +
           </Button>
         </div>

@@ -1,43 +1,43 @@
 import React from "react";
 import classes from "./Input.module.css";
 
-const input = (props) => {
+const Input = ({invalid, shouldValidate, touched, type, config, value, changed}) => {
   let input = null;
   const inputClasses = [classes.InputElement];
 
-  if (props.invalid && props.shouldValidate && props.touched) {
+  if (invalid && shouldValidate && touched) {
     inputClasses.push(classes.Invalid);
   }
 
-  switch (props.type) {
+  switch (type) {
     case "input":
       input = (
         <input
-          {...props.config}
+          {...config}
           className={inputClasses.join(" ")}
-          value={props.value}
-          onChange={props.changed}
+          value={value}
+          onChange={changed}
         />
       );
       break;
     case "textarea":
       input = (
         <input
-          {...props.config}
+          {...config}
           className={inputClasses.join(" ")}
-          value={props.value}
-          onChange={props.changed}
+          value={value}
+          onChange={changed}
         />
       );
       break;
     case "select":
       input = (
         <select
-          // value={props.value}
-          onChange={props.changed}
+          // value={value}
+          onChange={changed}
           className={inputClasses.join(" ")}
           defaultValue={"Fastest"}>
-          {props.config.options.map((option) => (
+          {config.options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.displayValue}
             </option>
@@ -48,9 +48,9 @@ const input = (props) => {
     default:
       input = (
         <input
-          {...props.config}
+          {...config}
           className={classes.InputElement}
-          value={props.value}
+          value={value}
         />
       );
   }
@@ -58,4 +58,4 @@ const input = (props) => {
   return <div className={classes.Input}>{input}</div>;
 };
 
-export default input;
+export default Input;

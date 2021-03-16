@@ -6,12 +6,12 @@ import DrawerToggle from "../SideDrawer/DrawerToggle/DrawerToggle";
 import classes from "./Toolbar.module.css";
 import {Link} from "react-router-dom";
 
-const toolbar = (props) => {
+const toolbar = ({show, closed, drawerToggleClicked}) => {
   return (
     <header className={classes.Toolbar}>
-      <DrawerToggle clicked={props.drawerToggleClicked} />
+      <DrawerToggle clicked={drawerToggleClicked} />
       <>
-        <SideDrawer show={props.show} closed={props.closed} />
+        <SideDrawer show={show} closed={closed} />
       </>
       <div className={classes.Logo}>
         <Link to="/">
@@ -19,7 +19,7 @@ const toolbar = (props) => {
         </Link>
       </div>
       <nav className={classes.DesktopOnly}>
-        <NavigationItems hide={props.show} />
+        <NavigationItems hide={show} />
       </nav>
     </header>
   );

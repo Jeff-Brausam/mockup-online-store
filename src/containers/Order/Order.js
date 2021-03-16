@@ -23,22 +23,22 @@ const Order = (props) => {
   let order = <Spinner />;
 
   if (userOrder) {
-    order = userOrder.map((el) => {
+    order = userOrder.map((item) => {
       return (
-        <div key={el.id} className={classes.OrderContainer}>
+        <div key={item.id} className={classes.OrderContainer}>
           <p>
-            ORDER ID: <strong>{el.id}</strong>
+            ORDER ID: <strong>{item.id}</strong>
           </p>
           <div>
-            {el.cart.map((el, ind) => (
+            {item.cart.map((item, ind) => (
               <div className={classes.ItemsContainer} key={ind}>
-                <p>Item: {el.name}</p>
-                <p>Price: ${el.price}</p>
+                <p>Item: {item.name}</p>
+                <p>Price: ${item.price}</p>
               </div>
             ))}
           </div>
           <p>
-            Total: <strong>${el.price}</strong>
+            Total: <strong>${item.price}</strong>
           </p>
         </div>
       );
