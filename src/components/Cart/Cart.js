@@ -5,7 +5,7 @@ const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, tempAdd}) =
   const [userCart, setUserCart] = useState(cart);
   
   useLayoutEffect(() => {
-    let sortedCart = sortCart(Object.freeze(cart));  
+    let sortedCart = sortCart(cart);  
     setUserCart(sortedCart);
 
     return () => sortedCart = null;
@@ -34,7 +34,7 @@ const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, tempAdd}) =
     }, []);
   }
 
-  const quantity = getQuantity(Object.freeze(cart));
+  const quantity = getQuantity(cart);
 
   let orders = null;
 
