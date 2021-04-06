@@ -6,7 +6,7 @@
   background: rgb(255, 255, 255);
   font-size: 1rem;
   line-height: 1rem;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.2);
   cursor: default;
   border-radius: 5px;
 }

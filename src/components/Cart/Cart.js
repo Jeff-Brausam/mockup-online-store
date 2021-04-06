@@ -5,7 +5,14 @@ const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, tempAdd}) =
   const [userCart, setUserCart] = useState(cart);
   
   useLayoutEffect(() => {
-    let sortedCart = cart.reduce((cart, item) => {
+    let sortedCart = sortCart(Object.freeze(cart));  
+    setUserCart(sortedCart);
+
+    return () => sortedCart = null;
+  }, [cart]);
+
+  function sortCart(userCart) {
+    return userCart.reduce((cart, item) => {
       if (!cart.includes(item)) {
         cart.push(item);
         cart.sort((a, b) => a.name.localeCompare(b.name));
@@ -13,23 +20,24 @@ const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, tempAdd}) =
         return cart;
       }
         return cart;
-      }, []);
-    setUserCart(sortedCart);
-    return () => sortedCart = null;
-  }, [cart]);
+    }, []);
+  }
+    
+  function getQuantity(userCart) {
+    return userCart.reduce((cart, item) => {
+        if (item.name in cart) {
+          cart[item.name]++;
+        } else {
+          cart[item.name] = 1;
+        }
+        return cart;
+    }, []);
+  }
 
-  // Gets the quantity
-  const quantity = cart.reduce((cart, item) => {
-      if (item.name in cart) {
-        cart[item.name]++;
-      } else {
-        cart[item.name] = 1;
-      }
-      return cart;
-  }, []);
+  const quantity = getQuantity(Object.freeze(cart));
 
   let orders = null;
-  
+
   orders = userCart.map((el, ind) => {
     return (
       <CartItem
