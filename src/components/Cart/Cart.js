@@ -1,7 +1,7 @@
 import React, {useState, useLayoutEffect} from "react";
 import CartItem from "./CartItem/CartItem";
 
-const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, tempAdd}) => {
+export const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, tempAdd}) => {
   const [userCart, setUserCart] = useState(cart);
   
   useLayoutEffect(() => {
