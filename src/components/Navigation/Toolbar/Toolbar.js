@@ -9,18 +9,22 @@ import {Link} from "react-router-dom";
 const toolbar = ({show, closed, drawerToggleClicked}) => {
   return (
     <header className={classes.Toolbar}>
-      <DrawerToggle clicked={drawerToggleClicked} />
-      <>
-        <SideDrawer show={show} closed={closed} />
-      </>
-      <div className={classes.Logo}>
-        <Link to="/">
-          <img src={Logo} alt={"Top Logo"} />
-        </Link>
+      <div className={classes.Container}> 
+        <DrawerToggle clicked={drawerToggleClicked} />
+        <>
+          <SideDrawer show={show} closed={closed} />
+        </>
+        <div className={classes.Logo}>
+          <Link to="/">
+            <img src={Logo} alt={"Top Logo"} />
+          </Link>
+        </div>
+        <nav className={classes.DesktopOnly}>
+          <NavigationItems hide={show} />
+        </nav>
+
+
       </div>
-      <nav className={classes.DesktopOnly}>
-        <NavigationItems hide={show} />
-      </nav>
     </header>
   );
 };

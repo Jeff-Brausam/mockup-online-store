@@ -19,7 +19,7 @@ export const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, temp
       } else {
         return cart;
       }
-        return cart;
+      return cart;
     }, []);
   }
     
@@ -36,9 +36,9 @@ export const Cart = ({cart, storeInv, inStock, removeAllofItem, tempRemove, temp
 
   const quantity = getQuantity(cart);
 
-  let orders = null;
+  // let orders = null;
 
-  orders = userCart.map((el, ind) => {
+  const orders = userCart.map((el, ind) => {
     return (
       <CartItem
         name={el.name}

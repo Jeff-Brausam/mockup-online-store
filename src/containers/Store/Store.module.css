@@ -1,3 +1,6 @@
 .StoreError {
   height: 60vh;
 }
+.Store {
+  background-color: rgb(245, 245, 245);
+}

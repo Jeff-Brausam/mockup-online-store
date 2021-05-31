@@ -40,10 +40,9 @@ export const Store = ({history}) => {
 
   function viewItemHandler(id) {
     const itemIndex = storeInv.findIndex((storeItem) => {
-      return storeItem.itemId === id
+      return storeItem.itemId === id;
     });
     const selectedItem = { ...storeInv[itemIndex] };
-    
     setViewedItem(selectedItem);
     setViewedIndex(itemIndex);
     setViewing(!viewing);

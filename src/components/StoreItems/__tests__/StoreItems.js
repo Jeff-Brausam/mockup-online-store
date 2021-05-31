@@ -3,7 +3,7 @@ import {render} from "@testing-library/react";
 import StoreItems from "../StoreItems";
 
 test("<StoreItems /> renders a component with storeItems nested inside of it", () => {
-  const testItem = [
+  const dummyItem = [
     {
       name: "testItem",
       imgURL: "testImgURL",
@@ -20,11 +20,11 @@ test("<StoreItems /> renders a component with storeItems nested inside of it", (
   const stockedStatus = [true];
 
   const {container, getByTestId} = render(
-    <StoreItems items={testItem} stockedStatus={stockedStatus} />,
+    <StoreItems items={dummyItem} stockedStatus={stockedStatus} />,
   );
 
-  const firstItem = getByTestId(testItem[0].name);
-  const secondItem = getByTestId(testItem[1].name);
+  const firstItem = getByTestId(dummyItem[0].name);
+  const secondItem = getByTestId(dummyItem[1].name);
 
   expect(container.children).toHaveLength(1);
   expect(container.children[0].firstChild).toEqual(firstItem);

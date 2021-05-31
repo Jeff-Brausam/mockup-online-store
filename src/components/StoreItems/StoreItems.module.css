@@ -1,6 +1,5 @@
 .StoreItems {
-  background: transparent;
-  width: 100%;
+  width: 1240px;
   display: flex;
   flex-flow: row wrap;
   margin: 0 auto;

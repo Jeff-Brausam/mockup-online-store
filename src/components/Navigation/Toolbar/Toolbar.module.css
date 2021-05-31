@@ -3,7 +3,8 @@
   background: white;
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 0;
@@ -14,12 +15,20 @@
 
 .Logo {
   width: 6rem;
-  padding: 0.5rem;
-  position: absolute;
-  left: 4%;
-  top: 10%;
+
+  /* padding: 0.5rem; */
+  /* position: absolute; */
+  /* left: 4%; */
+  /* top: 10%; */
   box-sizing: border-box;
   filter: invert(1);
+}
+
+.Container {
+  flex-basis: 1240px;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 @media (max-width: 500px) {
