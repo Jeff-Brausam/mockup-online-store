@@ -12,19 +12,14 @@ const storeItem = (props) => {
         <strong className={classes.ItemName}>{props.name}</strong>
       </p>
       <div className={classes.ButtonRow}>
-        <span>
-          <Button clicked={() => props.viewItem(props.id)}>View</Button>
-        </span>
-        <span>
-          <p className={classes.Price}>${props.price}</p>
-        </span>
-        <span>
-          <Button
-            disabled={props.stockedStatus[props.ind] === false}
-            clicked={() => props.addToCart(props.id)}>
-            Add To Cart
-          </Button>
-        </span>
+        <Button clicked={() => props.viewItem(props.id)}>View</Button>
+
+        <p className={classes.Price}>${props.price}</p>
+        <Button
+          disabled={props.stockedStatus[props.ind] === false}
+          clicked={() => props.addToCart(props.id)}>
+          Add To Cart
+        </Button>
       </div>
     </div>
   );

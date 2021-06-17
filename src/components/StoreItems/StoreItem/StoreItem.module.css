@@ -1,7 +1,10 @@
 .StoreItem {
   width: 20rem;
-  height: 10rem;
-  padding: 0.5rem 1rem 3rem 1rem;
+  height: 15rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 1.5rem 1rem;
   background: rgb(255, 255, 255);
   font-size: 1rem;
@@ -33,6 +36,8 @@
 
 .StoreItem button {
   cursor: pointer;
+  width: 5.5rem;
+  height: 2rem;
   outline: none;
   transform: translateY(0);
 }
@@ -45,9 +50,9 @@
 .ButtonRow {
   display: flex;
   justify-content: space-between;
-  height: 0%;
+  width: 90%;
   align-items: center;
-  margin: 2.1rem 0.3rem;
+  /* margin: 2.1rem 0.3rem; */
 }
 
 .ItemName {

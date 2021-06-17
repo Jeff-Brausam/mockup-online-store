@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, {useState, useEffect, useCallback} from "react";
+import {useSelector, useDispatch} from "react-redux";
 import StoreItems from "../../components/StoreItems/StoreItems";
 import ItemView from "../../components/StoreItems/ItemView/ItemView";
 import Backdrop from "../../components/UI/Backdrop/Backdrop";
@@ -19,7 +19,7 @@ export const Store = ({history}) => {
     () => dispatch(action.fetchStoreInventory()),
     [dispatch],
   );
-  
+
   const [viewedItem, setViewedItem] = useState(null);
   const [viewedIndex, setViewedIndex] = useState(null);
   const [viewing, setViewing] = useState(false);
@@ -29,24 +29,24 @@ export const Store = ({history}) => {
       initStoreInventory();
     }
   }, [initStoreInventory, firstLoad]);
-  
+
   function addItemToCart(itemID) {
     dispatch(action.addItemToCart(itemID));
   }
 
   function removeItemFromCart(itemID) {
-    dispatch(action.removeItemFromCart(itemID))
+    dispatch(action.removeItemFromCart(itemID));
   }
 
   function viewItemHandler(id) {
     const itemIndex = storeInv.findIndex((storeItem) => {
       return storeItem.itemId === id;
     });
-    const selectedItem = { ...storeInv[itemIndex] };
+    const selectedItem = {...storeInv[itemIndex]};
     setViewedItem(selectedItem);
     setViewedIndex(itemIndex);
     setViewing(!viewing);
-  };
+  }
 
   function exitViewItemHandler() {
     setViewedItem(null);
@@ -56,13 +56,13 @@ export const Store = ({history}) => {
 
   function proceedToCheckout() {
     history.push("/checkout");
-  };
+  }
 
   // Error message if database fails to fetch items
   let errorMessage = "Failed to fetch store items. Try refreshing";
-  
+
   // Individual item view
-  let itemView = null;
+  let itemView;
   // All store items, normal display
   let storeItems = error ? (
     <div className={classes.StoreError}>
@@ -83,7 +83,8 @@ export const Store = ({history}) => {
       />
     );
     // If they are viewing an item (click on view button)
-    if (viewing) {
+    console.log(viewing);
+    if (viewing === true) {
       itemView = (
         <ItemView
           items={viewedItem}
@@ -94,6 +95,8 @@ export const Store = ({history}) => {
           toCheckout={proceedToCheckout}
         />
       );
+    } else {
+      itemView = null;
     }
   }
   return (
